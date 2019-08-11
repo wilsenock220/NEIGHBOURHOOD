@@ -50,3 +50,21 @@ def profile(request):
             "change": change,
         },
     )
+
+
+@login_required(login_url="/accounts/login/")
+def edit(request):
+
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
+        return redirect("profile")
+    else:
+
+        form = ProfileForm()
+
+    title = "Edit"
+    return render(request, "edit.html", {"form": form, "title": title})
