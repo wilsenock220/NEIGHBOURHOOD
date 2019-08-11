@@ -24,3 +24,17 @@ class Neighbour(models.Model):
         neigbor = cls.objects.filter(id=neigborhood_id)
         return neigbor
 
+
+class Profile(models.Model):
+    fullname = models.CharField(max_length=50)
+    image = models.ImageField(upload_to="profile/", blank=True)
+    neigbor = models.ForeignKey(Neighbour, on_delete=models.CASCADE)
+    location = models.CharField(max_length=50)
+    secondaryEmail = models.EmailField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.fullname
+
+    class Meta:
+        pass
