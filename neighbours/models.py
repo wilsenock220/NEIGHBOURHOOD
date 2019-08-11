@@ -69,3 +69,16 @@ class Businesses(models.Model):
     def search_business(cls, name):
         busines = cls.objects.filter(businessesName__icontains=name)
         return busines
+
+
+class Feeds(models.Model):
+    image = models.ImageField(upload_to="feeds/", blank=True)
+    post = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    neigbor = models.ForeignKey(Neighbour, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.post
+
+    def save_post(self):
+        self.save()
