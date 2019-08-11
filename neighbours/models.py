@@ -38,3 +38,34 @@ class Profile(models.Model):
 
     class Meta:
         pass
+
+
+class Businesses(models.Model):
+    businessesName = models.CharField(max_length=100)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    neigbor = models.ForeignKey(Neighbour, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=50)
+
+    def __str__(self):
+        return self.businessesName
+
+    def create_business(self):
+        self.save()
+
+    def delete_business(self):
+        busines = Businesses.objects.all().delete()
+        return busines
+
+    def update_business(self):
+        updated = Businesses.objects.filter(id=1).update(businessesName="collo")
+        return updated
+
+    @classmethod
+    def find_business(cls, business_id):
+        busines = cls.objects.filter(id=business_id)
+        return busines
+
+    @classmethod
+    def search_business(cls, name):
+        busines = cls.objects.filter(businessesName__icontains=name)
+        return busines
