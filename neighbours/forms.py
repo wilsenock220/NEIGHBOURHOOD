@@ -36,3 +36,10 @@ class UpdateForm(forms.ModelForm):
         model = Profile
         exclude = ["user"]
         widgets = {"neigbor": forms.Select()}
+
+
+class ChangeHood(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ["user", "image", "fullname", "location", "secondaryEmail"]
+        widgets = {"neigbor": forms.Select()}
