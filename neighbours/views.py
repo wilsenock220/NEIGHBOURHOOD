@@ -128,3 +128,12 @@ def feeds(request):
             "profile": profile,
         },
     )
+
+
+@login_required(login_url="/accounts/login/")
+def search(request):
+    if "businessesName" in request.GET and request.GET["businessesName"]:
+        name = request.GET.get("businessesName")
+        results = Businesses.search_business(name)
+
+        return render(request, "search.html", {"business": results, "name": name})
