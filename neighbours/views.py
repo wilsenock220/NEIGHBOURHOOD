@@ -84,3 +84,47 @@ def business(request):
         form = BusinessForm()
     return render(request, "business.html", {"form": form})
 
+
+@login_required(login_url="/accounts/login/")
+def feeds(request):
+
+    try:
+
+        profile = Profile.objects.filter(user=request.user)
+        arr = []
+        for i in profile:
+            arr.append(i.neigbor.id)
+
+        id = arr[0]
+        business = Businesses.objects.filter(neigbor=id)
+        feed = Feeds.objects.filter(neigbor=id)
+        pop_count = Profile.objects.filter(neigbor=id)
+        all_hoods = Neighbour.objects.filter(id=id)
+    except Exception as e:
+        raise Http404()
+
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.neigbor = Neighbour(id)
+            post.save()
+        return redirect("feeds")
+    else:
+        form = PostForm()
+    title = "Feeds"
+
+    return render(
+        request,
+        "feeds.html",
+        {
+            "business": business,
+            "form": form,
+            "feed": feed,
+            "hoods": all_hoods,
+            "title": title,
+            "pop": pop_count,
+            "profile": profile,
+        },
+    )
