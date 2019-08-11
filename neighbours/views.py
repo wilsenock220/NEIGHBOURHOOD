@@ -68,3 +68,19 @@ def edit(request):
 
     title = "Edit"
     return render(request, "edit.html", {"form": form, "title": title})
+
+
+@login_required(login_url="/accounts/login/")
+def business(request):
+    if request.method == "POST":
+        form = BusinessForm(request.POST)
+        if form.is_valid():
+            busi = form.save(commit=False)
+            busi.user = request.user
+            form.save()
+        return redirect("profile")
+
+    else:
+        form = BusinessForm()
+    return render(request, "business.html", {"form": form})
+
