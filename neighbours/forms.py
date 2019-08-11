@@ -29,3 +29,10 @@ class PostForm(forms.ModelForm):
         widgets = {
             "post": forms.TextInput(attrs={"placeholder": "Tell us whats goin on"})
         }
+
+
+class UpdateForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ["user"]
+        widgets = {"neigbor": forms.Select()}
