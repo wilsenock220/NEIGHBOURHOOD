@@ -9,3 +9,44 @@ def index(request):
     profile = Profile.objects.filter(user_id=request.user.id)
     title = "Home"
     return render(request, "index.html", {"profile": profile, "title": title})
+
+
+@login_required(login_url="/accounts/login/")
+def profile(request):
+    profile = Profile.objects.filter(user=request.user)
+    busi = Businesses.objects.filter(user=request.user)
+    post = Feeds.objects.filter(user=request.user)
+    if request.method == "POST":
+        instance = Profile.objects.get(user=request.user)
+        form = UpdateForm(request.POST or None, request.FILES, instance=instance)
+        if form.is_valid():
+            upda = form.save(commit=False)
+            upda.save()
+
+        return redirect("profile")
+    else:
+        form = UpdateForm()
+
+    if request.method == "POST":
+        instance = Profile.objects.get(user=request.user)
+        change = ChangeHood(request.POST or None, request.FILES, instance=instance)
+        if change.is_valid():
+            chan = change.save(commit=False)
+            chan.save()
+        return redirect("profile")
+    else:
+        change = ChangeHood()
+
+    title = "Profile"
+    return render(
+        request,
+        "profile.html",
+        {
+            "profile": profile,
+            "busi": busi,
+            "post": post,
+            "form": form,
+            "title": title,
+            "change": change,
+        },
+    )
