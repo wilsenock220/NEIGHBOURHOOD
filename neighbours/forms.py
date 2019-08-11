@@ -8,3 +8,15 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         exclude = ["user"]
         widgets = {"neigbor": forms.Select()}
+
+
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Businesses
+        exclude = ["user"]
+        widgets = {
+            "businessesName": forms.TextInput(
+                attrs={"placeholder": "Add a business Name"}
+            ),
+            "email": forms.TextInput(attrs={"placeholder": "Add a business email"}),
+        }
