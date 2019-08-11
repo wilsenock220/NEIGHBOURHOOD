@@ -20,3 +20,12 @@ class BusinessForm(forms.ModelForm):
             ),
             "email": forms.TextInput(attrs={"placeholder": "Add a business email"}),
         }
+
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Feeds
+        exclude = ["user", "neigbor"]
+        widgets = {
+            "post": forms.TextInput(attrs={"placeholder": "Tell us whats goin on"})
+        }
