@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{{block.super}}
+
+{%block content%}
+
+<!--Carousel Wrapper-->
+<div id="nextDoor" class="carousel slide carousel-fade" data-ride="carousel" data-interval="false">
+  <div class="carousel-inner" role="listbox">
+
+    <!--First slide-->
+    <div class="carousel-item active">
+      <!--Mask-->
+      <div class="view">
+        <div class="full-bg-img flex-center mask rgba-indigo-light white-text">
+          <ul class="animated col-md-12 list-unstyled list-inline">
+            <li>
+              <h1 class="font-weight-bold text-uppercase">Know your neighbourhood</h1>
+            </li>
+            <li>
+              <p class="font-weight-bold text-uppercase py-4">Discover Your NeighbourHood</p>
+            </li>
+            {%if user.is_authenticated%}
+            {%if profile%}
+            <li class="list-inline-item">
+              <a href="/feeds/neighbour/" id="a" class="btn btn-cyan btn-lg btn-rounded ml-0">See latest news</a>
+            </li>
+            {%else%}
+
+            <li class="list-inline-item">
+              <a href="{%url 'profile'%}{{user.username}}" class="btn btn-unique btn-lg btn-rounded mr-0">Please Update
+                your profile</a>
+            </li>
+            {%endif%}
+            {%else%}
+            <li class="list-inline-item">
+              <a href="/accounts/register/" id="a" class="btn btn-lg">Sign up/ Login</a>
+            </li>
+
+
+            {%endif%}
+          </ul>
+        </div>
+      </div>
+      <!--/.Mask-->
+    </div>
+
+  </div>
+</div>
+<!--/.Carousel Wrapper-->
+
+{%endblock%}

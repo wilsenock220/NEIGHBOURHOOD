@@ -1,0 +1,50 @@
+{%extends 'registration/base.html'%}
+{% load bootstrap4%}
+{%load static%}
+{{block.supper}}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body id="login">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="loginn">
+                    <div class="sizee">
+                        <form class=" form form-group" action="/accounts/login/" method="post">
+                            <legend>Login</legend>
+                            <hr>
+                            {%csrf_token%}
+                            {%bootstrap_form form%}
+                            <hr>
+                            <button class="btn btn-outline-info" id="up" type="submit" name="button">Login</button>
+                            <li class="list-inline-item" id="down">
+                                <a href="/accounts/register/" id="a" class="btn">Sign up</a>
+                            </li>
+
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-3"></div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+{%endblock%}
