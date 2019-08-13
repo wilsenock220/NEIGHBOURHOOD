@@ -87,22 +87,22 @@ WSGI_APPLICATION = 'Neighbours.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 # if config("MODE")=='dev':
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config("DB_NAME"),
-#         "USER": config("DB_USER"),
-#         'PASSWORD': config("DB_PASSWORD"),
-#         "HOST": config("DB_HOST")
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config("DB_NAME"),
+        "USER": config("DB_USER"),
+        'PASSWORD': config("DB_PASSWORD"),
+        "HOST": config("DB_HOST")
+    }
+}
 # else:
-DATABASES = {'default': dj_database_url.config(default=config("DATABASE_URL"))}
+# DATABASES = {'default': dj_database_url.config(default=config("DATABASE_URL"))}
 
-db_from_evn = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_evn)
+# db_from_evn = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_evn)
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv)
+# ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

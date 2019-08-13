@@ -2,7 +2,7 @@
 
 #### This is a Python web application using Django  framework and Postgresql,RESTful API,2019
 
-#### By **KENNETH MUCHIRI**
+#### By **Wilstan Onditi**
 
 ## Description
 Having to know everyone in your neighbourhood can be challenging, But their will be that feeling to know whats going on on your neighbourhood, maybe an event is going down on some next street or some bad activity just happened , Well how do you keep up with all these , Thus Creation of NextDoor App It allows users to be upto date to whatever activity that's going on in your neighbourhood
@@ -55,9 +55,9 @@ NO known bugs as at the moment please reach to us if you see any.
 
 
 ## Support and contact details
-Email : kenmucciz8@gmail.com
+Email :wilsenock220@gmail.com
 ### License
 *License is under MIT 2019*
 view Full License here [MIT](LICENSE)
-Copyright (c) 2019 **Kenneth Muchiri**
+Copyright (c) 2019 **Wilstan Onditi**
 This software is free to use and distribute, Therefore all rights and given to any user to modify and either use for Commercial purpose or local purpose.
