@@ -22,6 +22,3 @@ urlpatterns = [
     url(r'^',include('neighbours.urls')),
     url(r'^accounts/',include('registration.backends.simple.urls')),
 ]
-
-
-290680
